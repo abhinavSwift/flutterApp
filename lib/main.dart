@@ -8,6 +8,9 @@ import 'package:passenger_app/login/deal.dart';
 import 'package:passenger_app/login/login.dart';
 import 'package:passenger_app/login/profile.dart';
 import 'package:passenger_app/login/setting.dart';
+import 'package:passenger_app/login/signup.dart';
+import 'package:passenger_app/wallet/card.dart';
+import 'package:passenger_app/wallet/wallet.dart';
 import 'package:passenger_app/provider/referals.dart';
 import 'package:passenger_app/testingFile.dart';
 import 'package:passenger_app/trip/myTrips.dart';
@@ -38,11 +41,11 @@ class MyApp extends StatelessWidget {
       // routes: ,
       // initialRoute: FirebaseAuth.instance.currentUser != null ? '/login': '/WelcomeScreen',
       routes: {
-        '/':(context) => const Login(),
+        // '/':(context) => const Login(),
         // '/':(context) => const DistanceCalc(),
         // '/':(context) =>  const WelcomeScreen(),
-        '/setting':(context) =>   SettingsScreen(),
-        '/deal':(context) =>    const DealsScreen(),
+        '/':(context) =>  WalletScreen(),
+        // '/deal':(context) =>    const DealsScreen(),
       },
     );
   }

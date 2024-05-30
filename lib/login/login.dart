@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 import 'package:passenger_app/login/OtpAuth.dart';
+import 'package:passenger_app/login/signup.dart';
 import '../provider/CountryCode_provider.dart';
 
 class Login extends StatefulWidget {
@@ -163,7 +164,14 @@ class _Login extends State<Login> {
                       },
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SignUpPage(),
+                            ),
+                          );
+                  },
                   child: Text("Don't have account , Register"),
                 )
               ],
