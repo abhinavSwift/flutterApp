@@ -6,6 +6,7 @@ import 'package:passenger_app/login/WelcomeScreen.dart';
 // import 'package:passenger_app/login/WelcomeScreen.dart';
 import 'package:passenger_app/login/login.dart';
 import 'package:passenger_app/login/profile.dart';
+import 'package:passenger_app/login/setting.dart';
 import 'package:passenger_app/provider/referals.dart';
 import 'package:passenger_app/testingFile.dart';
 import 'package:passenger_app/trip/myTrips.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         // '/':(context) => const DistanceCalc(),
         // '/':(context) =>  const WelcomeScreen(),
         // '/':(context) =>   ProfileScreen(),
-        '/':(context) =>   ReferralPage(),
+        '/':(context) =>    SettingsScreen(),
       },
     );
   }
