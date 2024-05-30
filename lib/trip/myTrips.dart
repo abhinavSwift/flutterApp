@@ -2,24 +2,12 @@ import 'package:flutter/material.dart';
 import 'trip.dart';
 import 'package:intl/intl.dart';
 
-void main() {
-  runApp(MyTripsApp());
-}
 
-class MyTripsApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My Trips',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyTripsPage(),
-    );
-  }
-}
+
 
 class MyTripsPage extends StatefulWidget {
+  const MyTripsPage({super.key});
+
   @override
   _MyTripsPageState createState() => _MyTripsPageState();
 }

@@ -12,7 +12,9 @@ import 'package:passenger_app/login/deal.dart';
 import 'package:passenger_app/login/login.dart';
 import 'package:passenger_app/login/profile.dart';
 import 'package:passenger_app/login/setting.dart';
-import 'package:passenger_app/provider/referals.dart';
+import 'package:passenger_app/referral/referals.dart';
+import 'package:passenger_app/trip/myTrips.dart';
+import 'package:passenger_app/wallet/wallet.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:google_map_polyline_new/google_map_polyline_new.dart';
 
@@ -118,11 +120,21 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             ),
             ListTile(
               title: const Text('Wallet'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  WalletScreen()),
+                  );
+              },
             ),
             ListTile(
               title: const Text('mytrip'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyTripsPage()),
+                  );
+              },
             ),
             ListTile(
               title: const Text('Setting'),
@@ -155,10 +167,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 );
               },
             ),
-            ListTile(
-              title: const Text('Sign Out'),
-              onTap: () {},
-            ),
+            
             ListTile(
               title: const Text('Need Help?'),
               onTap: () {},
@@ -181,8 +190,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               title: const Text('Terms & Conditions'),
               onTap: () {},
             ),
+            ListTile(
+              title: const Text('Sign Out'),
+              onTap: () {
+                // FirebaseAuth.instance.signOut();
+                FirebaseAuth.instance.signOut();
+              },
+            ),
           ],
         ),
+        
       ),
       body: GoogleMap(
         onMapCreated: (GoogleMapController controller) {

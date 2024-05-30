@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:passenger_app/wallet/card.dart';
 
 class WalletScreen extends StatelessWidget {
+  const WalletScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +55,7 @@ class WalletScreen extends StatelessWidget {
           color: Colors.blue[400],
         // ),
       ),
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
@@ -73,7 +77,7 @@ class WalletScreen extends StatelessWidget {
 
   Widget _buildSavedCardsSection() {
     return Container(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -101,13 +105,13 @@ class WalletScreen extends StatelessWidget {
             color: Colors.purple,
             size: 50,
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           const Text(
             'No cards found.\nPlease tap the button below to add a card.',
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.grey),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               // primary: Colors.purple,
@@ -117,7 +121,11 @@ class WalletScreen extends StatelessWidget {
               ),
             ),
             onPressed: () {
+              
               // Handle Add New Card tap
+            //  Navigator.push(context , MaterialPageRoute(builder: (context) => const AddCardPage() ),);
+          
+
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
