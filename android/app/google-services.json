@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "179462036772",
+    "firebase_url": "https://mybuggy-development-default-rtdb.firebaseio.com",
+    "project_id": "mybuggy-development",
+    "storage_bucket": "mybuggy-development.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179462036772:android:8eaa29f99ada7ccfa6a7b1",
+        "android_client_info": {
+          "package_name": "com.example.passenger_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179462036772-1rqk2bsnbdkmvbtn3r1mmjdjvcb9nf47.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.passenger_app",
+            "certificate_hash": "f725d6c9879b581cb13d226df426cb2de39b49c9"
+          }
+        },
+        {
+          "client_id": "179462036772-1v2rumhchm04bumnf8geb7q6hm3ofaca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkReTKJCn5Z8rTxjybEldMD-ahKNfHvrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179462036772-1v2rumhchm04bumnf8geb7q6hm3ofaca.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "179462036772-bqcrejerseliabvcjj7591m0h48vh6os.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.passengerApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
