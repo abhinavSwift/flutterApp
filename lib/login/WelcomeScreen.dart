@@ -3,11 +3,16 @@ import 'dart:math' show cos, sqrt, asin;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:passenger_app/login/deal.dart';
 import 'package:passenger_app/login/login.dart';
 import 'package:passenger_app/login/profile.dart';
+import 'package:passenger_app/login/setting.dart';
+import 'package:passenger_app/provider/referals.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:google_map_polyline_new/google_map_polyline_new.dart';
 
@@ -30,8 +35,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   GoogleMapPolyline googleMapPolyline =
       GoogleMapPolyline(apiKey: "AIzaSyA6ZUMXveSvj4QaSMnYVOIMS9GwfHXJp_Y");
   List<LatLng>? cordinatesPosition;
-  var currentUserNumber = (FirebaseAuth.instance.currentUser).toString();
-
+  var currentUserNumber = (FirebaseAuth.instance.currentUser?.phoneNumber);
+  
   static const CameraPosition _cameraposition = CameraPosition(
     target: LatLng(25.611219, 85.130692),
     zoom: 17,
@@ -60,7 +65,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
   }
-
+  
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
@@ -87,7 +92,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       appBar: AppBar(
         title: const Text("Welcome rider.."),
         backgroundColor: Colors.lightBlue[400],
-        
       ),
       endDrawer: Drawer(
         backgroundColor: Colors.blue.shade100,
@@ -99,87 +103,88 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 backgroundImage: NetworkImage(
                     'https://images.unsplash.com/photo-1485290334039-a3c69043e517?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYyOTU3NDE0MQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=300'),
               ),
-              accountName: Text(currentUserNumber.toString()),
+              accountName: Text(currentUserNumber!),
+            
               accountEmail: Text('Akimabhinav@gmail.com'),
             ),
             ListTile(
               title: const Text('Profile'),
               onTap: () {
-                Navigator.push(context,  MaterialPageRoute(
-                              builder: (context) => ProfileScreen()
-                            ),);
-                
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()),
+                );
               },
             ),
             ListTile(
               title: const Text('Wallet'),
-              onTap: () {
-                
-              },
+              onTap: () {},
             ),
             ListTile(
               title: const Text('mytrip'),
-              onTap: () {
-                
-              },
+              onTap: () {},
             ),
             ListTile(
               title: const Text('Setting'),
               onTap: () {
-                
+                // OnTap:
+                // () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SettingsScreen()),
+                  );
+                // };
               },
             ),
             ListTile(
               title: const Text('Referral'),
               onTap: () {
-                
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ReferralPage()),
+                );
+                print(currentUserNumber);
               },
             ),
-            
             ListTile(
               title: const Text('Deals'),
               onTap: () {
-                
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DealsScreen()),
+                );
               },
             ),
             ListTile(
               title: const Text('Sign Out'),
-              onTap: () {
-                
-              },
+              onTap: () {},
             ),
             ListTile(
               title: const Text('Need Help?'),
-              onTap: () {
-                
-              },
+              onTap: () {},
             ),
             ListTile(
-              title: const Text('Privacy Policy'),
+                title: const Text('Privacy Policy'),
                 onTap: () async {
-                   var uri = Uri.parse("https://easytaxiservices.com/privacy-policy/");
-                    if (await canLaunchUrl(uri)){
-    await launchUrl(uri);
-                          } else {
-                               // can't launch url
-                                        }
-                  
-            //  js.context.callMethod('open', ['https://stackoverflow.com/questions/ask']);
-            //  this.window.open('https://stackoverflow.com/questions/ask', 'new tab');
-          }
-              
-            ),
+                  var uri =
+                      Uri.parse("https://easytaxiservices.com/privacy-policy/");
+                  if (await canLaunchUrl(uri)) {
+                    await launchUrl(uri);
+                  } else {
+                    // can't launch url
+                  }
+
+                  //  js.context.callMethod('open', ['https://stackoverflow.com/questions/ask']);
+                  //  this.window.open('https://stackoverflow.com/questions/ask', 'new tab');
+                }),
             ListTile(
               title: const Text('Terms & Conditions'),
-              onTap: () {
-                
-              },
+              onTap: () {},
             ),
           ],
         ),
       ),
-      body: 
-      GoogleMap(
+      body: GoogleMap(
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
           setPolylinePoints();

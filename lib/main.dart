@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:passenger_app/login/MapRoute.dart';
 import 'package:passenger_app/login/WelcomeScreen.dart';
+import 'package:passenger_app/login/deal.dart';
 // import 'package:passenger_app/login/WelcomeScreen.dart';
 import 'package:passenger_app/login/login.dart';
 import 'package:passenger_app/login/profile.dart';
@@ -37,11 +38,11 @@ class MyApp extends StatelessWidget {
       // routes: ,
       // initialRoute: FirebaseAuth.instance.currentUser != null ? '/login': '/WelcomeScreen',
       routes: {
-        // '/':(context) => const Login(),
+        '/':(context) => const Login(),
         // '/':(context) => const DistanceCalc(),
         // '/':(context) =>  const WelcomeScreen(),
-        // '/':(context) =>   ProfileScreen(),
-        '/':(context) =>    SettingsScreen(),
+        '/setting':(context) =>   SettingsScreen(),
+        '/deal':(context) =>    const DealsScreen(),
       },
     );
   }

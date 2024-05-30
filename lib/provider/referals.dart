@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/services.dart'; // Required for clipboard functionality
 
 class ReferralPage extends StatefulWidget {
+  const ReferralPage({super.key});
+
   @override
   _ReferralPageState createState() => _ReferralPageState();
 }
