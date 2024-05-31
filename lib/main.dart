@@ -6,6 +6,7 @@ import 'package:passenger_app/login/WelcomeScreen.dart';
 import 'package:passenger_app/login/deal.dart';
 // import 'package:passenger_app/login/WelcomeScreen.dart';
 import 'package:passenger_app/login/login.dart';
+import 'package:passenger_app/login/managedTrust.dart';
 import 'package:passenger_app/login/notifactions.dart';
 import 'package:passenger_app/login/profile.dart';
 import 'package:passenger_app/login/setting.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         // '/':(context) => const Login(),
         // '/':(context) => const NotificationsPage(),
         '/':(context) =>  const WelcomeScreen(),
+        // '/':(context) =>  const trustPage(),
         // '/':(context) =>  SignUpPage(),
         // '/deal':(context) =>    const DealsScreen(),
       },

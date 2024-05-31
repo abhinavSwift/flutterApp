@@ -1,13 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:passenger_app/login/managedTrust.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({super.key});
+  const SettingsScreen({Key? key}) : super(key: key);
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  void _showDeleteOptions(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.all(14.0),
+          height: 148,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+          ),
+          child: Column(
+            children: [
+              const Center(
+                child: Text(
+                  'Deactivate your Account Instead of deleting?',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                onPressed: () {
+                  // Add your deactivate account logic here
+                },
+                child: Text('Deactivate Account'),
+              ),
+              Spacer(),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Cancel'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,14 +118,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               subtitle: Text('Manage trusted contacts'),
               trailing: Icon(Icons.arrow_forward),
               onTap: () {
-                // Navigate to manage trusted contact screen
-              },
-            ),
-            ListTile(
-              title: Text('Privacy'),
-              trailing: Icon(Icons.arrow_forward),
-              onTap: () {
-                // Navigate to privacy screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const trustPage()),
+                );
               },
             ),
             ListTile(
@@ -78,7 +130,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 style: TextStyle(color: Colors.red),
               ),
               onTap: () {
-                // Show confirmation dialog for account deletion
+                _showDeleteOptions(context);
               },
             ),
             ListTile(
