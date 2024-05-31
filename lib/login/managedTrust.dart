@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:passenger_app/login/addContact.dart';
 
-class trustPage extends StatelessWidget {
-  const trustPage({super.key});
+class TrustPage extends StatelessWidget {
+  const TrustPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class trustPage extends StatelessWidget {
           children: [
             const Center(
               child: Text(
-                'Trusted contacts lets you share your trip status with family and friends Set personalized reminders so you never forget to share trips Trips will never be shared without your permission Privacy Policy',
+                'Trusted contacts lets you share your trip status with family and friends. Set personalized reminders so you never forget to share trips. Trips will never be shared without your permission. Privacy Policy',
                 style: TextStyle(fontSize: 18.0),
                 textAlign: TextAlign.center,
               ),
@@ -34,29 +35,35 @@ class trustPage extends StatelessWidget {
               style: TextStyle(fontSize: 16.0),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 30.0),
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality for first button
-              },
-              child: Text(
-                'Call Now',
-                style: TextStyle(fontSize: 18.0),
-              ),
-              // color: Colors.blue,
-              // textColor: Colors.white,
-            ),
-            SizedBox(height: 10.0),
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality for second button
-              },
-              child: const Text(
-                'Send Email',
-                style: TextStyle(fontSize: 18.0),
-              ),
-              // color: Colors.blue,
-              // textColor: Colors.white,
+            const SizedBox(height: 30.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    // Add functionality for the first button
+                  },
+                  child: const Text(
+                    'Later',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // AddTrustedContacts
+                    Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AddTrustedContacts()),
+                );
+                    // Add functionality for the second button
+                  },
+                  child: const Text(
+                    'Now',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

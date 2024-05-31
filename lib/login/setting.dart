@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:passenger_app/login/managedTrust.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -15,7 +15,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       builder: (context) {
         return Container(
           padding: const EdgeInsets.all(14.0),
-          height: 148,
+          height: 200,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
@@ -120,7 +120,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const trustPage()),
+                  MaterialPageRoute(builder: (context) => const TrustPage()),
                 );
               },
             ),

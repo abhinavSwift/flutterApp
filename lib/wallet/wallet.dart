@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:passenger_app/wallet/card.dart';
 
 class WalletScreen extends StatelessWidget {
@@ -9,9 +8,9 @@ class WalletScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Wallet'),
+        title: const Text('Wallet'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -22,9 +21,9 @@ class WalletScreen extends StatelessWidget {
         child: Column(
           children: [
             _buildWalletBalance(),
-            SizedBox(height: 20),
-            _buildSavedCardsSection(),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
+            _buildSavedCardsSection(context),
+            const SizedBox(height: 20),
             _buildOptionButton(
               icon: Icons.account_balance_wallet,
               text: 'Top Up Wallet',
@@ -32,7 +31,7 @@ class WalletScreen extends StatelessWidget {
                 // Handle Top Up Wallet tap
               },
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             _buildOptionButton(
               icon: Icons.card_giftcard,
               text: 'Voucher',
@@ -48,12 +47,10 @@ class WalletScreen extends StatelessWidget {
 
   Widget _buildWalletBalance() {
     return Container(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        // gradient: LinearGradient(
-          color: Colors.blue[400],
-        // ),
+        color: Colors.blue[400],
       ),
       child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,7 +72,7 @@ class WalletScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSavedCardsSection() {
+  Widget _buildSavedCardsSection(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
@@ -114,18 +111,15 @@ class WalletScreen extends StatelessWidget {
           const SizedBox(height: 20),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              // primary: Colors.purple,
-              
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
             ),
             onPressed: () {
-              
-              // Handle Add New Card tap
-            //  Navigator.push(context , MaterialPageRoute(builder: (context) => const AddCardPage() ),);
-          
-
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AddCardPage()),
+              );
             },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
@@ -140,7 +134,11 @@ class WalletScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildOptionButton({required IconData icon, required String text, required VoidCallback onTap}) {
+  Widget _buildOptionButton({
+    required IconData icon,
+    required String text,
+    required VoidCallback onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
