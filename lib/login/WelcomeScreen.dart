@@ -10,6 +10,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:passenger_app/login/deal.dart';
 import 'package:passenger_app/login/login.dart';
+import 'package:passenger_app/login/notifactions.dart';
 import 'package:passenger_app/login/profile.dart';
 import 'package:passenger_app/login/setting.dart';
 import 'package:passenger_app/referral/referals.dart';
@@ -37,7 +38,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   GoogleMapPolyline googleMapPolyline =
       GoogleMapPolyline(apiKey: "AIzaSyA6ZUMXveSvj4QaSMnYVOIMS9GwfHXJp_Y");
   List<LatLng>? cordinatesPosition;
-  var currentUserNumber = (FirebaseAuth.instance.currentUser?.phoneNumber);
+  var currentUserNumber =  FirebaseAuth.instance.currentUser?.phoneNumber ?? 'Unknown Number';
   
   static const CameraPosition _cameraposition = CameraPosition(
     target: LatLng(25.611219, 85.130692),
@@ -95,112 +96,98 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         title: const Text("Welcome rider.."),
         backgroundColor: Colors.lightBlue[400],
       ),
-      endDrawer: Drawer(
-        backgroundColor: Colors.blue.shade100,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            UserAccountsDrawerHeader(
-              currentAccountPicture: const CircleAvatar(
-                backgroundImage: NetworkImage(
-                    'https://images.unsplash.com/photo-1485290334039-a3c69043e517?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTYyOTU3NDE0MQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=300'),
+      endDrawer:Drawer(
+      child: Column(
+        children: <Widget>[
+          const UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.purple,
+            ),
+            accountName: Text('Mo Iphone', style: TextStyle(color: Colors.white)),
+            accountEmail: Text('mm@gmail.com', style: TextStyle(color: Colors.white)),
+            currentAccountPicture: CircleAvatar(
+              backgroundColor: Colors.blue,
+              child: Text(
+                'MI',
+                style: TextStyle(fontSize: 40.0, color: Colors.white),
               ),
-              accountName: Text(currentUserNumber!),
-            
-              accountEmail: Text('Akimabhinav@gmail.com'),
             ),
-            ListTile(
-              title: const Text('Profile'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfileScreen()),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Wallet'),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  WalletScreen()),
-                  );
-              },
-            ),
-            ListTile(
-              title: const Text('mytrip'),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyTripsPage()),
-                  );
-              },
-            ),
-            ListTile(
-              title: const Text('Setting'),
-              onTap: () {
-                // OnTap:
-                // () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SettingsScreen()),
-                  );
-                // };
-              },
-            ),
-            ListTile(
-              title: const Text('Referral'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ReferralPage()),
-                );
-                print(currentUserNumber);
-              },
-            ),
-            ListTile(
-              title: const Text('Deals'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DealsScreen()),
-                );
-              },
-            ),
-            
-            ListTile(
-              title: const Text('Need Help?'),
-              onTap: () {},
-            ),
-            ListTile(
-                title: const Text('Privacy Policy'),
-                onTap: () async {
-                  var uri =
-                      Uri.parse("https://easytaxiservices.com/privacy-policy/");
-                  if (await canLaunchUrl(uri)) {
-                    await launchUrl(uri);
-                  } else {
-                    // can't launch url
-                  }
-
-                  //  js.context.callMethod('open', ['https://stackoverflow.com/questions/ask']);
-                  //  this.window.open('https://stackoverflow.com/questions/ask', 'new tab');
-                }),
-            ListTile(
-              title: const Text('Terms & Conditions'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: const Text('Sign Out'),
-              onTap: () {
-                // FirebaseAuth.instance.signOut();
-                FirebaseAuth.instance.signOut();
-              },
-            ),
-          ],
-        ),
-        
+          ),
+          ListTile(
+            leading: Icon(Icons.trip_origin),
+            title: Text('My Trips'),
+            onTap: () {
+              // Handle the action here
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.account_balance_wallet),
+            title: Text('Wallet'),
+            onTap: () {
+              // Handle the action here
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.notifications),
+            title: Text('Notifications'),
+            onTap: () {
+              // Handle the action here
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.people),
+            title: const Text('Referrals'),
+            onTap: () {
+              // Handle the action here
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.local_offer),
+            title: const Text('Deals'),
+            onTap: () {
+              // Handle the action here
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Settings'),
+            onTap: () {
+              // Handle the action here
+            },
+          ),
+          const Spacer(),
+          ListTile(
+            title: const Text('Sign Out'),
+            onTap: () {
+              // Handle the action here
+            },
+          ),
+          ListTile(
+            title: const Text('Need Help?', style: TextStyle(color: Colors.purple)),
+            onTap: () {
+              // Handle the action here
+            },
+          ),
+          const Divider(),
+          ListTile(
+            title: const Text('Privacy Policy'),
+            onTap: () {
+              // Handle the action here
+            },
+          ),
+          ListTile(
+            title: const Text('Terms & Conditions'),
+            onTap: () {
+              // Handle the action here
+            },
+          ),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text('v2.0', style: TextStyle(color: Colors.grey)),
+          ),
+        ],
       ),
+    ),
       body: GoogleMap(
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);

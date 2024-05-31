@@ -6,6 +6,7 @@ import 'package:passenger_app/login/WelcomeScreen.dart';
 import 'package:passenger_app/login/deal.dart';
 // import 'package:passenger_app/login/WelcomeScreen.dart';
 import 'package:passenger_app/login/login.dart';
+import 'package:passenger_app/login/notifactions.dart';
 import 'package:passenger_app/login/profile.dart';
 import 'package:passenger_app/login/setting.dart';
 import 'package:passenger_app/login/signup.dart';
@@ -41,9 +42,9 @@ class MyApp extends StatelessWidget {
       // routes: ,
       // initialRoute: FirebaseAuth.instance.currentUser != null ? '/login': '/WelcomeScreen',
       routes: {
-        '/':(context) => const Login(),
-        // '/':(context) => const DistanceCalc(),
-        // '/':(context) =>  const WelcomeScreen(),
+        // '/':(context) => const Login(),
+        // '/':(context) => const NotificationsPage(),
+        '/':(context) =>  const WelcomeScreen(),
         // '/':(context) =>  SignUpPage(),
         // '/deal':(context) =>    const DealsScreen(),
       },
