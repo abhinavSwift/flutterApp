@@ -130,9 +130,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ListTile(
             leading: Icon(Icons.notifications),
             title: Text('Notifications'),
-            onTap: () {
-              // Handle the action here
-            },
+           onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const NotificationsPage()),
+                  );
+              },
           ),
           ListTile(
             leading: const Icon(Icons.people),
