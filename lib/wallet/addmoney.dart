@@ -32,13 +32,27 @@ class _TopUpScreenState extends State<TopUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Top Up' , style: TextStyle(color: Colors.white),),
+        title: Text(
+          'Top Up',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: Colors.black,
-        
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back ),
+          // style: Colors.white,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Center(child: Text('\$0.00' , style: TextStyle(color: Colors.white),)),
+            child: Center(
+              child: Text(
+                '\$0.00',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
           ),
         ],
       ),
@@ -85,7 +99,6 @@ class _TopUpScreenState extends State<TopUpScreen> {
                           onPressed: _creditCard,
                           child: Text('Credit Card'),
                           style: ElevatedButton.styleFrom(
-                            // primary: Colors.purple,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -113,7 +126,6 @@ class _TopUpScreenState extends State<TopUpScreen> {
                           onPressed: _addNewCard,
                           child: Text('ADD NEW CARD'),
                           style: ElevatedButton.styleFrom(
-                            // primary: Colors.purple,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -132,3 +144,4 @@ class _TopUpScreenState extends State<TopUpScreen> {
     );
   }
 }
+

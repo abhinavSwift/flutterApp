@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:passenger_app/wallet/addmoney.dart';
 import 'package:passenger_app/wallet/card.dart';
+import 'package:passenger_app/wallet/voucher.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});
@@ -29,6 +31,10 @@ class WalletScreen extends StatelessWidget {
               text: 'Top Up Wallet',
               onTap: () {
                 // Handle Top Up Wallet tap
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const TopUpScreen()),
+                );
               },
             ),
             const SizedBox(height: 10),
@@ -37,6 +43,11 @@ class WalletScreen extends StatelessWidget {
               text: 'Voucher',
               onTap: () {
                 // Handle Voucher tap
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const VoucherScreen()),
+                );
               },
             ),
           ],
@@ -62,6 +73,7 @@ class WalletScreen extends StatelessWidget {
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
+            
           ),
           Icon(
             Icons.arrow_forward,
@@ -140,7 +152,7 @@ class WalletScreen extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () => {},
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
         decoration: BoxDecoration(

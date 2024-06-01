@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       routes: {
         // '/':(context) => const Login(),
         // '/':(context) =>  AddTrustedContacts(),
-        '/':(context) =>  const TopUpScreen(),
+        '/':(context) =>  const WelcomeScreen(),
         // '/':(context) =>  const trustPage(),
         // '/':(context) =>  SignUpPage(),
         // '/deal':(context) =>    const DealsScreen(),
